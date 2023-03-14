@@ -2,7 +2,7 @@
 start_amount = float(input("Enter starting dollar amount: "))
 
 # Print column headings
-print("{:>10s} {:>15s}".format("Price", "Discounted Price"))
+print("{:>5s}{:>16s}{:>20s}".format("Price", "Percentage", "Discounted Price"))
 
 # Generate discount table
 for i in range(21):
