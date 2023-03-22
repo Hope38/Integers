@@ -1,74 +1,63 @@
 blacklist = set()
 whitelist = set()
 
-def add_to_blacklist(site):
-    blacklist.add(site)
-
-def add_to_whitelist(site):
-    whitelist.add(site)
-
-def remove_from_blacklist(site):
-    blacklist.discard(site)
-
-def remove_from_whitelist(site):
-    whitelist.discard(site)
-
-def display_blacklist():
-    print("Blacklisted sites:")
-    for site in blacklist:
-        print(site)
-
-def display_whitelist():
-    print("Whitelisted sites:")
-    for site in whitelist:
-        print(site)
-
-def display_unique():
-    print("Unique sites:")
-    unique = blacklist.symmetric_difference(whitelist)
-    for site in unique:
-        print(site)
-
-def display_common():
-    print("Common sites:")
-    common = blacklist.intersection(whitelist)
-    for site in common:
-        print(site)
-
 while True:
-    print("\n")
-    print("1. Add to blacklist")
-    print("2. Add to whitelist")
-    print("3. Remove from blacklist")
-    print("4. Remove from whitelist")
+    print("1. Add site to blacklist")
+    print("2. Add site to whitelist")
+    print("3. Remove site from blacklist")
+    print("4. Remove site from whitelist")
     print("5. Display blacklist")
     print("6. Display whitelist")
-    print("7. Display unique sites")
-    print("8. Display common sites")
+    print("7. Display common sites")
+    print("8. Display all unique sites")
     print("9. Quit")
+
     choice = input("Enter your choice (1-9): ")
 
     if choice == "1":
-        site = input("Enter site to add to blacklist: ")
-        add_to_blacklist(site)
+        site = input("Enter the site to blacklist: ")
+        blacklist.add(site)
+        print("Site added to blacklist")
     elif choice == "2":
-        site = input("Enter site to add to whitelist: ")
-        add_to_whitelist(site)
+        site = input("Enter the site to whitelist: ")
+        whitelist.add(site)
+        print("Site added to whitelist")
     elif choice == "3":
-        site = input("Enter site to remove from blacklist: ")
-        remove_from_blacklist(site)
+        site = input("Enter the site to remove from blacklist: ")
+        if site in blacklist:
+            blacklist.remove(site)
+            print("Site removed from blacklist")
+        else:
+            print("Site not found in blacklist")
     elif choice == "4":
-        site = input("Enter site to remove from whitelist: ")
-        remove_from_whitelist(site)
+        site = input("Enter the site to remove from whitelist: ")
+        if site in whitelist:
+            whitelist.remove(site)
+            print("Site removed from whitelist")
+        else:
+            print("Site not found in whitelist")
     elif choice == "5":
-        display_blacklist()
+        print("Blacklisted sites:")
+        for site in blacklist:
+            print(site)
     elif choice == "6":
-        display_whitelist()
+        print("Whitelisted sites:")
+        for site in whitelist:
+            print(site)
     elif choice == "7":
-        display_unique()
+        common_sites = blacklist.intersection(whitelist)
+        print("Common sites:")
+        for site in common_sites:
+            print(site)
     elif choice == "8":
-        display_common()
+        all_sites = blacklist.union(whitelist)
+        print("All unique sites:")
+        for site in all_sites:
+            print(site)
     elif choice == "9":
+        print("Goodbye!")
         break
     else:
-        print("Invalid choice. Try again.")
+        print("invalid choice, try again")
+
+
