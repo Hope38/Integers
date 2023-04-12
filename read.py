@@ -22,12 +22,14 @@ def add_phonebook_entry(phonebook):
     number = input("Enter number: ")
     phonebook[name] = number
     print(f"Added {name} to phone book")
+    write_phonebook(phonebook) # Write to phonebook file after adding entry
 
 def remove_phonebook_entry(phonebook):
     name = input("Enter name to remove: ")
     if name in phonebook:
         del phonebook[name]
         print(f"Removed {name} from phone book")
+        write_phonebook(phonebook) # Write to phonebook file after removing entry
     else:
         print(f"{name} not found in phone book")
 
@@ -62,3 +64,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
